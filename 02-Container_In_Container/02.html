@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-classic/resources/theme-classic-all.css">
+    <title>Ext.JS Containers</title>
+</head>
+<body>
+    <h1>Containers</h1>
+    
+    <script>
+
+        var childContainer1 = Ext.create('Ext.container.Container', {
+            html:'I am child container 1'
+        })
+
+        
+        var childContainer2 = Ext.create('Ext.container.Container', {
+            html:'I am child container 2'
+        })
+
+        Ext.create('Ext.container.Container', {
+            title:'Parent Container',
+            renderTo:Ext.getBody() ,
+            border: 1,
+            style:{
+                borderStyle:'solid',
+                borderWidth:'1px'
+            },
+            html:'Hello from Parent Container',
+            items:[childContainer1, childContainer2]
+        })
+        
+    
+    </script>
+</body>
+</html>
