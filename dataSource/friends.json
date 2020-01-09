@@ -1,0 +1,52 @@
+{
+  "friendlist": [
+    {
+      "id": 1,
+      "friendname": "Oma",
+      "location": "Chennai",
+      "score": 25
+    },
+    {
+      "id": 2,
+      "friendname": "Peru",
+      "location": "Japan",
+      "score": 40
+    },
+    {
+      "id": 3,
+      "friendname": "Tika",
+      "location": "Srilanka",
+      "score": 10
+    },
+    {
+      "id": 4,
+      "friendname": "Mina",
+      "location": "Chennai",
+      "score": 50
+    },
+    {
+      "id": 5,
+      "friendname": "Luka",
+      "location": "Japan",
+      "score": 80
+    },
+    {
+      "id": 6,
+      "friendname": "Uma",
+      "location": "Srilanka",
+      "score": 100
+    },
+    {
+      "friendname": "Neo Neo",
+      "location": "Atlantis",
+      "score": 99,
+      "id": 7
+    },
+    {
+      "friendname": "Tika",
+      "location": "Howa",
+      "score": 88,
+      "id": 8
+    }
+  ]
+}
