@@ -13,7 +13,7 @@ Ext.onReady(function () {
             {
                 title: 'ExtJS Panel 1',
                 html: "Cell 1"
-               
+             
             },
             {
                 title: 'ExtJS Panel 2',
