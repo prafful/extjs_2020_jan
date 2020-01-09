@@ -10,6 +10,6 @@
 8.    npm i -g json-server
 9. Open dataSource folder (it contains friends.json) in command prompt
 10. Run command
-11    json-server friends.json
+11.    json-server friends.json
 12. Fake REST Api will be avalilable at http://localhost:3000    
 
