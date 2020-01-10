@@ -58,6 +58,10 @@ Ext.define('CrudApp.view.FriendForm', {
     resizable:false,
     closeAction:'hide',
     modal:true,
+    config:{
+        recordIndex:0,
+        action:''
+    },
     items:[
         {
             xtype:'form',
@@ -76,7 +80,8 @@ Ext.define('CrudApp.view.FriendForm', {
     ],
     buttons:[
         {
-            text: 'Add'
+            text: 'Add Friend',
+            action:'add'
         },
         {
             text: 'Reset', 
@@ -112,17 +117,57 @@ Ext.define('CrudApp.controller.Friends', {
         this.control(
             {
                 'friendlist > toolbar > button[action=add]':{
-                    click: this.someFunction
+                    click: this.showAddFriendForm
+                },
+                'friendform button[action=add]':{
+                    click: this.doAddFriend
+                },
+                'friendlist':{
+                    itemdblclick: this.onRowDoubleClick
                 }
             }
+            
+
             )
     },
-    someFunction: function(){
-        console.log("Help Me Please!")
-        var friendwindow = this.getFormWindow()
-        friendwindow.setTitle('Add Friend')
-        //friendwindow.setAction('add');
+    showAddFriendForm: function(){
+        console.log("Help Me Please!");
+        var friendwindow = this.getFormWindow();
+        friendwindow.setTitle('Add Friend');
+        friendwindow.setAction('add');
+        friendwindow.down('form').getForm().reset();
         friendwindow.show();
+    },
+    doAddFriend: function(){
+        var friendwindow =  this.getFormWindow()
+        console.log(friendwindow)
+        var friendstore = this.getAllFriendsStore()
+        console.log(friendstore);
+        var newFriend = friendwindow.down('form').getValues()
+        console.log(newFriend);
+        var action = friendwindow.getAction()
+        console.log(action);
+        var friendm = Ext.create("CrudApp.model.Friend", newFriend)
+        if(action == 'edit'){
+            friendstore.removeAt(friendwindow.getRecordIndex())
+            friendstore.insert(friendwindow.getRecordIndex(), newFriend)
+        }
+      
+        friendstore.add(friendm)
+        friendwindow.close()
+
+    },
+    onRowDoubleClick: function(one, currentFriend, gridItem, currentRecordIndex){
+        console.log(gridItem, currentRecordIndex);
+        console.log("Double Bonus!");
+        console.log(currentFriend.getData());
+        var friendwindow =  this.getFormWindow()
+        console.log(friendwindow.getRecordIndex());
+        friendwindow.setRecordIndex(currentRecordIndex)
+        friendwindow.setAction('edit')
+        friendwindow.setTitle('Edit Friend');
+        friendwindow.down("form").getForm().setValues(currentFriend.getData())
+        friendwindow.show()
     }
 })
 
